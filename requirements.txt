@@ -1,0 +1,8 @@
+streamlit>=1.32
+numpy>=1.24
+pandas>=2.0
+scipy>=1.11
+requests>=2.31
+# optional, only needed for the Braket tab:
+# amazon-braket-sdk>=1.70
+# amazon-braket-default-simulator>=1.20
