@@ -11,8 +11,10 @@ import data
 
 st.set_page_config(page_title="Social Cycles — Joint-Loss Pricer", layout="wide")
 st.title("Present-Pegged Societal Cycle Model for Joint-Loss Estimation")
-st.caption("ADB Quantum Challenge — Phase 1 prototype. Classical core validated against "
+st.caption("ADB Quantum Challenge — prototype. The app estimates the risk and price of a disaster-insurance contract for two sites. Given hazard data (how often earthquakes and heavy rain occur at each site), contract terms (how much each site is covered for), and a 3-year term, it computes five risk numbers — expected loss, probability both sites pay out, probability total loss exceeds a threshold, expected loss above that threshold, and probability both contracts are completely exhausted — and then optionally prices the contract using a four-law premium decomposition. It does this two ways: by exact enumeration (fast, exact, only works for 2 sites) and by sampling (Monte Carlo, Sobol, stratified, importance — works for any number of sites but has error). It also has a societal-cycle layer that can make the hazard rates non-stationary (year-by-year rather than a fixed annual rate) and a quantum tab that estimates how many quantum queries an ideal amplitude-estimation algorithm would need versus classical Monte Carlo. It is a benchmark-validation tool plus a live-data calculator: the same engine, two sources of input. The two modes are two input sources. Classical core validated against "
            "Table 5; cycle layer is a testable hypothesis, not an established fact.")
+
+
 
 # ---------------- sidebar ----------------
 mode = st.sidebar.radio("Project type", ["ADB benchmark", "Farm project"])
@@ -327,7 +329,7 @@ with tabs[4]:
         }, na_rep="—"),
         hide_index=True,
     )
-    
+
     if abs(diag.iloc[0]["E[L] (USD m)"] - diag.iloc[2]["E[L] (USD m)"]) < 1e-9:
         st.success("E[L] identical across independence / base / common-shock. "
                    "Dependence moves joint targets only, as the challenge predicts.")
